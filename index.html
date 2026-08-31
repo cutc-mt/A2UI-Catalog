@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A2UI UIカタログ — Agent to UI Protocol v0.9</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="logo">A2UI</div>
+      <div class="sub">UIコンポーネントカタログ</div>
+    </div>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot">
+      <span class="ver-badge">spec v0.9</span>
+      <a href="https://github.com/a2ui-project/a2ui" target="_blank" rel="noopener noreferrer">仕様リポジトリ ↗</a>
+    </div>
+  </aside>
+  <main class="main">
+    <header class="hero">
+      <h1>A2UI で表現できる UI カタログ</h1>
+      <p>
+        <strong>A2UI（Agent to UI Protocol）</strong>は、エージェントが<strong>宣言的なJSONメッセージのストリーム</strong>でUIの意図を送り、
+        クライアント側が自前のコンポーネントで安全に描画するためのオープン標準です。
+        このカタログでは、v0.9 ベーシックカタログの<strong>全18コンポーネント</strong>について
+        「A2UI JSON」と「ライブプレビュー」を並べて確認できます。
+      </p>
+      <ul class="hero-points">
+        <li>📦 各デモは実際のメッセージストリーム（<code>createSurface</code> → <code>updateComponents</code> → <code>updateDataModel</code>）をそのまま送信して描画しています</li>
+        <li>🖱️ プレビューはすべて操作可能です。ボタン押下時の <code>action</code> イベントや、入力に伴うデータモデルの変化もその場で確認できます</li>
+      </ul>
+      <p class="hero-note">
+        ⚠️ プレビューの描画には、本カタログ独自の<strong>仕様準拠ミニレンダラー</strong>を使用しています
+        （公式レンダラー React / Lit / Angular / Flutter の見た目とは細部が異なる場合があります）。
+      </p>
+    </header>
+    <div id="catalog"></div>
+    <footer class="footer">
+      <p>
+        A2UI UIカタログ — <a href="https://github.com/a2ui-project/a2ui" target="_blank" rel="noopener noreferrer">a2ui-project/a2ui</a>（Apache-2.0）の
+        v0.9仕様書・ベーシックカタログスキーマを参照して作成した非公式の学習資料です。
+      </p>
+    </footer>
+  </main>
+</div>
+<script src="js/icons.js"></script>
+<script src="js/markdown.js"></script>
+<script src="js/functions.js"></script>
+<script src="js/renderer.js"></script>
+<script src="js/catalog-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
