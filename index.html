@@ -7,8 +7,13 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+<div class="mobile-topbar" id="mobileTopbar">
+  <button class="menu-btn" id="menuBtn" aria-label="メニューを開く">☰</button>
+  <span class="topbar-title">A2UI UIカタログ</span>
+</div>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
 <div class="layout">
-  <aside class="sidebar">
+  <aside class="sidebar" id="sidebar">
     <div class="sidebar-brand">
       <div class="logo">A2UI</div>
       <div class="sub">UIコンポーネントカタログ</div>
@@ -52,5 +57,39 @@
 <script src="js/renderer.js"></script>
 <script src="js/catalog-data.js"></script>
 <script src="js/app.js"></script>
+<script>
+// モバイル用サイドバードロワー
+(function () {
+  var btn = document.getElementById('menuBtn');
+  var sidebar = document.getElementById('sidebar');
+  var overlay = document.getElementById('sidebarOverlay');
+  function open() {
+    sidebar.classList.add('open');
+    overlay.classList.add('show');
+    btn.setAttribute('aria-label', 'メニューを閉じる');
+    btn.textContent = '✕';
+  }
+  function close() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    btn.setAttribute('aria-label', 'メニューを開く');
+    btn.textContent = '☰';
+  }
+  if (btn && sidebar && overlay) {
+    btn.addEventListener('click', function () {
+      sidebar.classList.contains('open') ? close() : open();
+    });
+    overlay.addEventListener('click', close);
+    // ナビリンクをタップしたら自動で閉じる
+    sidebar.addEventListener('click', function (e) {
+      if (e.target.closest('a')) close();
+    });
+    // 幅を戻したら状態をリセット
+    window.matchMedia('(min-width: 901px)').addEventListener('change', function (e) {
+      if (e.matches) close();
+    });
+  }
+})();
+</script>
 </body>
 </html>
